@@ -1,0 +1,13 @@
+ORD-2026-1001,baseline,delivered
+ORD-2026-1002,baseline,shipped
+ORD-2026-1003,baseline,processing
+ORD-2026-1004,baseline,delivered
+ORD-2026-1005,baseline,shipped
+ORD-2026-1006,baseline,processing
+ORD-2026-1007,baseline,delivered
+ORD-2026-1008,baseline,shipped
+ORD-2026-1009,awkward,high_value,cancelled
+ORD-2026-1010,awkward,high_value,delayed
+ORD-2026-1011,awkward,high_value,partly_sent
+ORD-2026-1012,awkward,high_value,lost
+ORD-2026-1013,awkward,high_value,bad_address
