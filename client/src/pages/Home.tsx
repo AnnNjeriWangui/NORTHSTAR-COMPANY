@@ -1,8 +1,8 @@
-/* Parcel Atlas reminder: warm ivory, ink navy, Northstar red signal, editorial wayfinding, calm human support language. */
+
 
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
-import { ArrowUpRight, Check, ChevronRight, CircleHelp, Compass, Headphones, Package, RotateCcw, Send, Sparkles, UserRound } from "lucide-react";
+import { ArrowUpRight, Check, ChevronRight, Compass, Headphones, Package, RotateCcw, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { handleMessage, Intent, SupportResponse, welcomeResponse } from "@/lib/supportEngine";
@@ -83,8 +83,8 @@ export default function Home() {
   return (
     <main className="app-shell">
       <aside className="route-rail">
-        <div className="brand-lockup"><img src="/manus-storage/northstar-compass-star_0bb6b2a1.png" alt="Northstar compass star" /><div><strong>northstar</strong><span>retail support</span></div></div>
-        <div className="rail-intro"><span className="eyebrow">FLOW / LOGIC MVP</span><h1>Make the next step obvious.</h1><p>A rules-based support route for the questions customers ask most.</p></div>
+        <div className="brand-lockup"><img src="/northstar-compass-star.png" alt="Northstar compass star" /><div><strong>northstar</strong><span>retail support</span></div></div>
+        <div className="rail-intro"><span className="eyebrow">CUSTOMER SERVICE</span><h1>Customer Support</h1><p>Order status, returns, and refunds — handled quickly.</p></div>
         <div className="route-map">
           <Step number="01" label="Understand" complete={messages.length > 1} />
           <div className="route-line" />
@@ -92,28 +92,31 @@ export default function Home() {
           <div className="route-line" />
           <Step number="03" label="Resolve" active={isResolved} />
         </div>
-        <div className="rail-footer"><span className="online-dot" /> Prototype environment <span>v0.1</span></div>
+        <div className="rail-footer"><span className="online-dot" /> Northstar Retail Co.</div>
       </aside>
 
       <section className="workspace">
         <header className="topbar"><div><span className="eyebrow">NORTHSTAR RETAIL CO. / CUSTOMER SERVICE</span><h2>Support desk</h2></div><div className="topbar-meta"><span><span className="online-dot" /> Rules engine online</span><Button variant="outline" size="sm" onClick={() => setMessages([welcomeResponse()])}>Reset route</Button></div></header>
         <div className="workspace-grid">
           <section className="conversation-panel">
-            <div className="conversation-head"><div><span className="eyebrow">LIVE CONVERSATION</span><h3>What can we untangle?</h3></div><div className="conversation-count">{messages.length - 1} {messages.length - 1 === 1 ? "reply" : "replies"}</div></div>
-            <div className="composer-wrap">
-              <div className="quick-row">{quickPrompts.map((prompt) => <button key={prompt} onClick={() => submit(prompt)}>{prompt}</button>)}</div>
-              <div className="composer"><input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") submit(); }} placeholder="Ask about an order, return, or refund…" aria-label="Ask Northstar support" /><Button onClick={() => submit()} aria-label="Send question"><Send size={17} /></Button></div>
-              <div className="composer-hint"><Sparkles size={13} /> Try “Where’s my package?” or enter an order number <span>{orderCount ? `${orderCount} match${orderCount > 1 ? "es" : ""}` : ""}</span></div>
-            </div>
+            <div className="conversation-head"><div><span className="eyebrow">LIVE CONVERSATION</span><h3>How can we help?</h3></div><div className="conversation-count">{messages.length - 1} {messages.length - 1 === 1 ? "reply" : "replies"}</div></div>
             <div className="message-stack" aria-live="polite">
               {messages.map((message, index) => <div key={`${message.kind}-${index}`} className="message-block"><ResponseCard response={message} onAction={action} /></div>)}
+            </div>
+            <div className="composer-wrap">
+              <div className="composer"><input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") submit(); }} placeholder="Ask about an order, return, or refund…" aria-label="Ask Northstar support" /><Button onClick={() => submit()} aria-label="Send question"><Send size={17} /></Button></div>
+              {messages.length <= 1 && (
+                <div className="quick-row">
+                  {quickPrompts.map((prompt) => <button key={prompt} onClick={() => submit(prompt)}>{prompt}</button>)}
+                </div>
+              )}
+              <div className="composer-hint">Try “Where’s my package?” or paste an order number. <span>{orderCount ? `${orderCount} match${orderCount > 1 ? "es" : ""}` : ""}</span></div>
             </div>
           </section>
 
           <aside className="context-panel">
-            <div className="context-visual"><img src="/manus-storage/northstar-hero_26345f71.jpg" alt="Northstar parcel and compass on warm paper" /><div className="visual-caption">A clear route beats a long wait.</div></div>
-            <div className="context-body"><span className="eyebrow">WHAT THIS MVP COVERS</span><h3>Two questions.<br /><em>One clear route.</em></h3><div className="coverage-item"><span className="coverage-icon"><Package size={17} /></span><div><strong>Order status</strong><p>Processing, shipped, delivered, delayed, split, lost, and address exceptions.</p></div></div><div className="coverage-item"><span className="coverage-icon"><RotateCcw size={17} /></span><div><strong>Returns & refunds</strong><p>Return eligibility, cancelled-order refunds, and delivery-exception handoff.</p></div></div><div className="coverage-item"><span className="coverage-icon"><Headphones size={17} /></span><div><strong>Human handoff</strong><p>When the route cannot safely resolve the issue, the customer is never left guessing.</p></div></div></div>
-            <div className="context-note"><CircleHelp size={16} /><span>Prototype data is fictional and mirrors the team’s committed Northstar mock dataset.</span></div>
+            <div className="context-visual"><img src="/northstar-hero.jpg" alt="Northstar parcel" /></div>
+            <div className="context-body"><span className="eyebrow">WHAT WE HANDLE</span><h3>Order help<br /><em>&amp; returns</em></h3><div className="coverage-item"><span className="coverage-icon"><Package size={17} /></span><div><strong>Order status</strong><p>Processing, shipped, delivered, delayed, split shipments, lost parcels, and address issues.</p></div></div><div className="coverage-item"><span className="coverage-icon"><RotateCcw size={17} /></span><div><strong>Returns &amp; refunds</strong><p>Return eligibility, cancelled-order refunds, and delivery exception support.</p></div></div><div className="coverage-item"><span className="coverage-icon"><Headphones size={17} /></span><div><strong>Agent support</strong><p>For anything that needs a person, we connect you directly with no repeat explanations.</p></div></div></div>
           </aside>
         </div>
       </section>
