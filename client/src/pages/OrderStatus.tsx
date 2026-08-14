@@ -32,9 +32,11 @@ export default function OrderStatus() {
   return (
     <main className="order-page">
       <header className="order-header">
-        <button className="back-link" onClick={() => navigate("/")}><ArrowLeft size={16} /> Back to support desk</button>
-        <div className="brand-lockup"><img src="/manus-storage/northstar-compass-star_0bb6b2a1.png" alt="Northstar compass star" /><div><strong>northstar</strong><span>retail support</span></div></div>
-        <div className="header-label"><span className="online-dot" /> Secure prototype lookup</div>
+        <div className="destination-header-main">
+          <div className="brand-lockup"><img src="/manus-storage/northstar-compass-star_0bb6b2a1.png" alt="Northstar compass star" /><div><strong>northstar</strong><span>retail support</span></div></div>
+          <div className="header-label"><span className="online-dot" /> Secure prototype lookup</div>
+        </div>
+        <div className="destination-header-nav"><button className="back-link" onClick={() => navigate("/")}><ArrowLeft size={16} /> Back to support desk</button></div>
       </header>
       <div className="order-layout">
         <section className="order-main">

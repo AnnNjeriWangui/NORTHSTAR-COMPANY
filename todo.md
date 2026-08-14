@@ -38,3 +38,12 @@
 - [ ] Place quick-prompt response content below the search area.
 - [ ] Verify desktop and mobile affected states.
 - [ ] Push the correction to https://github.com/Fancy-nateku/nnn.git.
+
+## Destination header redesign
+
+- [x] Inspect the shared CTA destination-page header structure.
+- [x] Move the Northstar logo to the left side of the main header row.
+- [x] Keep route status on the right side of the main header row.
+- [x] Move Back to support desk into a separate row below the header.
+- [x] Verify the three CTA destination pages on desktop and mobile.
+- [ ] Commit and push the header revision to Fancy-nateku/nnn.

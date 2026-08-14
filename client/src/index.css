@@ -138,3 +138,126 @@ button:active { transform: scale(.97); }
     color: inherit;
   }
 }
+
+/* Parcel Atlas destination header: left-aligned brand row, right route status, and navigation on its own row below. */
+.order-header,
+.simple-flow-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "brand label"
+    "back back";
+  align-items: center;
+  height: auto;
+  min-height: 92px;
+  padding: 14px clamp(22px, 5vw, 72px) 12px;
+  row-gap: 9px;
+}
+.order-header .brand-lockup,
+.simple-flow-header .brand-lockup {
+  grid-area: brand;
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: start;
+}
+.order-header .header-label,
+.simple-flow-header .flow-label {
+  grid-area: label;
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: end;
+  width: auto;
+}
+.order-header .back-link,
+.simple-flow-header .back-link {
+  grid-area: back;
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: start;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .order-header,
+  .simple-flow-header {
+    min-height: 108px;
+    padding: 13px 18px 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 12px;
+  }
+  .order-header .brand-lockup,
+  .simple-flow-header .brand-lockup {
+    justify-self: start;
+  }
+  .order-header .header-label,
+  .simple-flow-header .flow-label {
+    justify-self: end;
+    font-size: 8px;
+  }
+  .order-header .back-link,
+  .simple-flow-header .back-link {
+    font-size: 9px;
+  }
+}
+
+/* Parcel Atlas destination header final layout: explicit rows prevent logo and navigation collisions across routes. */
+.order-header,
+.simple-flow-header {
+  display: block;
+  min-height: 0;
+  height: auto;
+  padding: 14px clamp(22px, 5vw, 72px) 12px;
+}
+.destination-header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 48px;
+}
+.destination-header-main .brand-lockup {
+  justify-self: auto;
+  flex: 0 0 auto;
+}
+.destination-header-main .header-label,
+.destination-header-main .flow-label {
+  justify-self: auto;
+  flex: 0 0 auto;
+  width: auto;
+}
+.destination-header-nav {
+  padding-top: 9px;
+}
+.destination-header-nav .back-link {
+  display: inline-flex;
+  justify-self: auto;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .order-header,
+  .simple-flow-header {
+    min-height: 0;
+    padding: 12px 18px 11px;
+  }
+  .destination-header-main {
+    min-height: 42px;
+    gap: 12px;
+  }
+  .destination-header-main .brand-lockup strong {
+    font-size: 19px;
+  }
+  .destination-header-main .brand-lockup span {
+    font-size: 7px;
+  }
+  .destination-header-main .header-label,
+  .destination-header-main .flow-label {
+    font-size: 8px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .destination-header-nav {
+    padding-top: 8px;
+  }
+  .destination-header-nav .back-link {
+    font-size: 9px;
+  }
+}
