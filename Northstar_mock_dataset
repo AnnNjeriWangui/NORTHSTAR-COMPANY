@@ -1,0 +1,64 @@
+# Customer Service Response Platform: Synthetic Test Orders
+
+**Generated:** 2026-08-13  
+**Purpose:** Test customer service response flows using ordinary orders plus high-value exception cases.  
+**Note:** All customer names, emails, addresses, and tracking details are fictional.
+
+---
+
+## Dataset Summary
+
+- **Baseline pretend orders:** 8
+- **Awkward / high-value exception orders:** 5
+- **Total orders:** 13
+- **Awkward categories included:**
+  - Cancelled
+  - Delayed
+  - Only partly sent
+  - Lost
+  - Bad address
+
+> The awkward orders are the valuable ones because they test edge-case handling, empathy, policy knowledge, refund flows, shipping exceptions, and address correction workflows.
+
+---
+
+## Baseline Pretend Orders
+
+| Order ID | Customer | Email | Items | Amount | Order Date | Status | Tracking / Fulfillment | Expected Test Scenario |
+|---|---|---|---|---:|---|---|---|---|
+| ORD-2026-1001 | Ava Thompson | ava.thompson@example.com | Stainless steel water bottle x1 | $24.99 | 2026-07-28 | Delivered 2026-08-01 | USPS 9400 1000 0000 0000 0001 | Routine order-status inquiry |
+| ORD-2026-1002 | Liam Patel | liam.patel@example.com | Wireless mouse x1, USB-C cable x2 | $63.50 | 2026-08-02 | Shipped | FedEx 7840 1000 0000 0002 | Tracking availability check |
+| ORD-2026-1003 | Maya Chen | maya.chen@example.com | Ceramic mug set x1 | $39.00 | 2026-08-09 | Processing | Not yet assigned | Pre-shipment question |
+| ORD-2026-1004 | Noah García | noah.garcia@example.com | LED desk lamp x1 | $54.25 | 2026-07-25 | Delivered 2026-07-30 | UPS 1Z1000000000000004 | Return policy question |
+| ORD-2026-1005 | Sofia Rossi | sofia.rossi@example.com | Yoga mat x1, yoga strap x1 | $48.75 | 2026-08-05 | Shipped | USPS 9400 1000 0000 0000 0005 | Delivery estimate question |
+| ORD-2026-1006 | Ethan Kim | ethan.kim@example.com | Bluetooth speaker x1 | $89.99 | 2026-08-11 | Processing | Not yet assigned | Order edit or payment question |
+| ORD-2026-1007 | Isabella Nguyen | isabella.nguyen@example.com | Phone case x2 | $35.98 | 2026-07-30 | Delivered 2026-08-04 | DHL 1000000007 | Product support question |
+| ORD-2026-1008 | Lucas Meyer | lucas.meyer@example.com | Coffee beans 1 kg x2 | $31.80 | 2026-08-07 | Shipped | FedEx 7840 1000 0000 0008 | Delivery instructions question |
+
+---
+
+## Awkward / High-Value Exception Orders
+
+| Order ID | Customer | Email | Awkward Case | Order Details | Amount | Order Date | Current State | Valuable Test Focus | Priority |
+|---|---|---|---|---|---:|---|---|---|---|
+| ORD-2026-1009 | Oliver Brown | oliver.brown@example.com | Cancelled | Standing desk converter x1 | $129.00 | 2026-08-03 | Cancelled by customer before shipment; refund pending since 2026-08-04 | Tests cancellation confirmation, refund timeline, and prevention of accidental fulfillment | High |
+| ORD-2026-1010 | Amelia Johnson | amelia.johnson@example.com | Delayed | Hiking boots x1 | $112.40 | 2026-07-29 | Carrier weather delay; original ETA was 2026-08-07, revised ETA is 2026-08-18 | Tests proactive apology, delay explanation, revised ETA communication, and compensation policy handling | High |
+| ORD-2026-1011 | Elijah Smith | elijah.smith@example.com | Only partly sent | Espresso machine x1, grinder x1, tamper x1 | $245.00 | 2026-08-01 | Machine and tamper shipped 2026-08-06; grinder backordered until 2026-08-20 | Tests split shipment explanation, missing item reassurance, backorder ETA, and follow-up workflow | High |
+| ORD-2026-1012 | Harper Davis | harper.davis@example.com | Lost | Noise-cancelling headphones x1 | $179.99 | 2026-07-26 | Tracking stalled at regional facility since 2026-08-02; carrier investigation opened | Tests lost-package claim handling, replacement versus refund decision, SLA tracking, and customer reassurance | Critical |
+| ORD-2026-1013 | Kai Wilson | kai.wilson@example.com | Bad address | Smart thermostat x1 | $139.50 | 2026-08-04 | Carrier marked address undeliverable due to missing unit number and ZIP mismatch; package held at depot | Tests address correction, customer verification, reshipment workflow, and prevention of repeat delivery failure | High |
+
+---
+
+## Suggested Agent Response Categories
+
+| Awkward Case | Expected Response Category | Key Checks |
+|---|---|---|
+| Cancelled | Cancellation and refund confirmation | Confirm order will not ship, explain refund status, provide refund timeline |
+| Delayed | Delay notification and empathy | Acknowledge delay, explain cause, provide revised ETA, offer next steps if available |
+| Only partly sent | Split shipment communication | Explain shipped versus missing items, provide backorder ETA, confirm no extra charge if applicable |
+| Lost | Lost-package investigation and resolution | Confirm investigation, explain claim status, offer replacement or refund according to policy |
+| Bad address | Address correction and reshipment | Verify correct address, request missing details, explain reshipment or pickup options |
+
+---
+
+## Test Labels
