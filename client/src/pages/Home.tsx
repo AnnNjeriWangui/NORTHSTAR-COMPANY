@@ -1,6 +1,7 @@
 /* Parcel Atlas reminder: warm ivory, ink navy, Northstar red signal, editorial wayfinding, calm human support language. */
 
 import { useMemo, useState } from "react";
+import { useLocation } from "wouter";
 import { ArrowUpRight, Check, ChevronRight, CircleHelp, Compass, Headphones, Package, RotateCcw, Send, Sparkles, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -51,6 +52,7 @@ function Step({ number, label, active, complete }: { number: string; label: stri
 }
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [messages, setMessages] = useState<SupportResponse[]>([welcomeResponse()]);
   const [input, setInput] = useState("");
   const [activeIntent, setActiveIntent] = useState<Intent>("unknown");
@@ -72,7 +74,7 @@ export default function Home() {
 
   function action(value: string) {
     const lower = value.toLowerCase();
-    if (lower.includes("order status")) { setActiveIntent("order_status"); setMessages((current) => [...current, handleMessage(value, "order_status")]); return; }
+    if (lower.includes("order status")) { navigate("/order-status"); return; }
     if (lower.includes("return") || lower.includes("refund")) { setActiveIntent("returns_refunds"); setMessages((current) => [...current, handleMessage(value, "returns_refunds")]); return; }
     if (lower.includes("agent") || lower.includes("support")) { setMessages((current) => [...current, handleMessage(value, "agent")]); return; }
     if (value.startsWith("ORD-")) { const response = handleMessage(value, activeIntent); setMessages((current) => [...current, response]); if (response.order) setSelectedOrder(response.order); }
