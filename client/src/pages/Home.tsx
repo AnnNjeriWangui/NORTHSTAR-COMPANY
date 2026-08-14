@@ -100,13 +100,13 @@ export default function Home() {
         <div className="workspace-grid">
           <section className="conversation-panel">
             <div className="conversation-head"><div><span className="eyebrow">LIVE CONVERSATION</span><h3>What can we untangle?</h3></div><div className="conversation-count">{messages.length - 1} {messages.length - 1 === 1 ? "reply" : "replies"}</div></div>
-            <div className="message-stack">
-              {messages.map((message, index) => <div key={`${message.kind}-${index}`} className="message-block"><ResponseCard response={message} onAction={action} /></div>)}
-            </div>
             <div className="composer-wrap">
               <div className="quick-row">{quickPrompts.map((prompt) => <button key={prompt} onClick={() => submit(prompt)}>{prompt}</button>)}</div>
               <div className="composer"><input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") submit(); }} placeholder="Ask about an order, return, or refund…" aria-label="Ask Northstar support" /><Button onClick={() => submit()} aria-label="Send question"><Send size={17} /></Button></div>
               <div className="composer-hint"><Sparkles size={13} /> Try “Where’s my package?” or enter an order number <span>{orderCount ? `${orderCount} match${orderCount > 1 ? "es" : ""}` : ""}</span></div>
+            </div>
+            <div className="message-stack" aria-live="polite">
+              {messages.map((message, index) => <div key={`${message.kind}-${index}`} className="message-block"><ResponseCard response={message} onAction={action} /></div>)}
             </div>
           </section>
 

@@ -47,3 +47,94 @@ button:active { transform: scale(.97); }
 .simple-flow-page { min-height: 100vh; background: radial-gradient(circle at 8% 0%, rgba(216,74,58,.08), transparent 28rem), var(--paper); color: var(--ink); }.simple-flow-header { min-height: 82px; padding: 0 5vw; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; border-bottom: 1px solid var(--line); background: rgba(245,241,233,.9); }.simple-flow-header .brand-lockup { justify-self: center; }.simple-flow-header .brand-lockup strong { color: var(--ink); }.simple-flow-header .brand-lockup span { color: var(--muted-ink); }.flow-label { justify-self: end; color: var(--muted-ink); font: 10px 'IBM Plex Mono', monospace; display: flex; align-items: center; gap: 8px; }.simple-flow-layout { max-width: 1200px; margin: 0 auto; padding: 58px 5vw 75px; display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 80px; }.simple-flow-main { min-width: 0; }.simple-flow-kicker { display: flex; justify-content: space-between; align-items: center; max-width: 690px; }.flow-index { color: var(--signal); font: 10px 'IBM Plex Mono', monospace; letter-spacing: .1em; }.simple-flow-main > h1 { font: 58px/.98 'DM Serif Display', serif; letter-spacing: -.035em; margin: 58px 0 20px; }.simple-flow-main > h1 em, .handoff-success h1 em { color: var(--signal); font-style: italic; }.flow-lede { color: #566168; max-width: 560px; font-size: 16px; line-height: 1.65; margin: 0; }.simple-flow-side { padding-top: 92px; }.returns-page .side-card, .agent-page .side-card { min-height: 360px; }.agent-form { max-width: 690px; margin-top: 42px; display: flex; flex-direction: column; gap: 17px; }.agent-form label { display: flex; flex-direction: column; gap: 8px; font: 11px 'IBM Plex Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }.agent-form label small { color: var(--muted-ink); text-transform: none; letter-spacing: 0; }.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }.field-input { display: flex; align-items: center; gap: 9px; border: 1px solid var(--line); background: #fffdf9; padding: 0 12px; }.field-input svg { color: var(--signal); flex: 0 0 auto; }.field-input input, .agent-form textarea { width: 100%; border: 0; outline: 0; background: transparent; padding: 13px 0; color: var(--ink); font: 14px 'IBM Plex Sans', sans-serif; letter-spacing: 0; text-transform: none; }.agent-form textarea { border: 1px solid var(--line); background: #fffdf9; padding: 13px; resize: vertical; line-height: 1.5; }.agent-form > button, .handoff-success > button { align-self: flex-start; background: var(--signal); color: white; border-radius: 3px; }.handoff-success { max-width: 690px; margin-top: 59px; }.success-mark { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--sage); color: #477152; margin-bottom: 22px; }.handoff-success h1 { font: 55px/.98 'DM Serif Display', serif; margin: 15px 0 19px; }.handoff-success > p { color: #566168; font-size: 16px; line-height: 1.65; max-width: 560px; }.handoff-summary { background: #fffdf9; border: 1px solid var(--line); border-left: 3px solid var(--signal); padding: 17px; display: grid; gap: 12px; margin: 26px 0; }.handoff-summary > div { display: flex; flex-direction: column; gap: 4px; }.handoff-summary span { color: var(--muted-ink); font: 9px 'IBM Plex Mono', monospace; letter-spacing: .1em; }.handoff-summary strong { font-size: 12px; line-height: 1.4; }.agent-page .side-card { background: #e9e2d6; color: var(--ink); }.agent-page .side-card::after { border-color: rgba(23,38,58,.12); box-shadow: 0 0 0 24px rgba(23,38,58,.025), 0 0 0 48px rgba(23,38,58,.025); }.agent-page .side-card .eyebrow { color: var(--signal); }.agent-page .side-item { border-color: var(--line); }.agent-page .side-item p { color: var(--muted-ink); }.agent-page .side-item span { color: var(--signal); }.agent-page .side-star { background: #f5f1e9; }
 @media (max-width: 850px) { .simple-flow-layout { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 39px; }.simple-flow-side { padding-top: 0; max-width: 690px; }.simple-flow-side .side-card { min-height: 0; } }
 @media (max-width: 600px) { .simple-flow-header { min-height: 76px; padding: 14px 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3px 12px; }.simple-flow-header .brand-lockup { order: -1; }.flow-label { width: 100%; justify-self: auto; font-size: 9px; }.simple-flow-layout { padding: 31px 18px 50px; }.simple-flow-kicker { align-items: flex-start; gap: 14px; }.flow-index { font-size: 8px; text-align: right; }.simple-flow-main > h1, .handoff-success h1 { font-size: 45px; margin-top: 40px; }.flow-lede, .handoff-success > p { font-size: 14px; }.field-grid { grid-template-columns: 1fr; }.agent-form { margin-top: 34px; }.handoff-success { margin-top: 39px; } }
+
+/* Parcel Atlas correction: preserve a steady left/back, centered mark, right/status header; keep Home replies in document flow below the search composer. */
+.order-header,
+.simple-flow-header {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+.order-header .back-link,
+.simple-flow-header .back-link {
+  justify-self: start;
+  min-width: 0;
+}
+.order-header .brand-lockup,
+.simple-flow-header .brand-lockup {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  white-space: nowrap;
+}
+.order-header .header-label,
+.simple-flow-header .flow-label {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  min-width: 0;
+  white-space: nowrap;
+}
+.conversation-panel .composer-wrap {
+  position: relative;
+  z-index: 2;
+}
+.conversation-panel .message-stack {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+}
+@media (max-width: 600px) {
+  .order-header,
+  .simple-flow-header {
+    min-height: 76px;
+    height: auto;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .order-header .brand-lockup,
+  .simple-flow-header .brand-lockup {
+    order: initial;
+  }
+  .order-header .header-label,
+  .simple-flow-header .flow-label {
+    width: auto;
+    justify-self: end;
+    font-size: 8px;
+    text-align: right;
+  }
+  .order-header .back-link,
+  .simple-flow-header .back-link {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 390px) {
+  .order-header .header-label,
+  .simple-flow-header .flow-label {
+    font-size: 0;
+  }
+  .order-header .header-label .online-dot,
+  .simple-flow-header .flow-label .online-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+  }
+}
+
+/* Parcel Atlas mobile header refinement: keep the centered mark clear of navigation text on narrow screens. */
+@media (max-width: 600px) {
+  .order-header .back-link,
+  .simple-flow-header .back-link {
+    font-size: 0;
+    gap: 5px;
+  }
+  .order-header .back-link::after,
+  .simple-flow-header .back-link::after {
+    content: 'Home';
+    font: 9px 'IBM Plex Mono', monospace;
+    color: inherit;
+  }
+}

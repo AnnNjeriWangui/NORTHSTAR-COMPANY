@@ -16,3 +16,25 @@
 - [x] Refine desktop, tablet, and mobile behavior across all pages.
 - [x] Run checks, tests, builds, and multi-viewport route verification.
 - [ ] Save a checkpoint and report the revision.
+
+## GitHub push
+
+- [ ] Verify the target remote, branch, and local working tree.
+- [ ] Commit the completed Northstar changes without rewriting team history.
+- [ ] Push the new commit to the GitHub repository.
+- [ ] Verify the remote commit and report the result.
+
+## New GitHub destination
+
+- [x] Set the requested destination to https://github.com/Fancy-nateku/nnn.git.
+- [x] Verify authentication and branch compatibility.
+- [x] Push the completed Northstar history to the new destination.
+- [x] Confirm the remote commit and report the result.
+
+## Header and quick-prompt correction
+
+- [ ] Inspect the secondary-route header alignment and home quick-prompt response placement.
+- [ ] Keep the secondary header in a stable left-center-right alignment.
+- [ ] Place quick-prompt response content below the search area.
+- [ ] Verify desktop and mobile affected states.
+- [ ] Push the correction to https://github.com/Fancy-nateku/nnn.git.
