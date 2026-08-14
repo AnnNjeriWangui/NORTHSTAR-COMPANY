@@ -75,8 +75,8 @@ export default function Home() {
   function action(value: string) {
     const lower = value.toLowerCase();
     if (lower.includes("order status")) { navigate("/order-status"); return; }
-    if (lower.includes("return") || lower.includes("refund")) { setActiveIntent("returns_refunds"); setMessages((current) => [...current, handleMessage(value, "returns_refunds")]); return; }
-    if (lower.includes("agent") || lower.includes("support")) { setMessages((current) => [...current, handleMessage(value, "agent")]); return; }
+    if (lower.includes("return") || lower.includes("refund")) { navigate("/returns-refunds"); return; }
+    if (lower.includes("agent") || lower.includes("support")) { navigate("/support-agent"); return; }
     if (value.startsWith("ORD-")) { const response = handleMessage(value, activeIntent); setMessages((current) => [...current, response]); if (response.order) setSelectedOrder(response.order); }
   }
 
