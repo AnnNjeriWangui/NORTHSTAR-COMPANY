@@ -2,6 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import { verifyMpesaCallback, handleMpesaStkCallback } from "./mpesa";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,15 @@ async function startServer() {
     process.env.NODE_ENV === "production"
       ? path.resolve(__dirname, "public")
       : path.resolve(__dirname, "..", "dist", "public");
+
+  app.use(express.json());
+
+  // Safaricom M-Pesa STK Push callback endpoint with token verification
+  app.post(
+    "/api/webhooks/mpesa/stk-callback",
+    verifyMpesaCallback,
+    handleMpesaStkCallback
+  );
 
   app.use(express.static(staticPath));
 
